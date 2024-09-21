@@ -4,7 +4,7 @@ import classroomModel from '../Models/classroomModel';
 import { convertToSlug } from '../Service/suport';
 
 interface Classroom {
-  classid?: number;
+  classid?: string;
   personid: number;
   classname: string;
 }
@@ -68,7 +68,7 @@ async function updateClassroom(req: Request, res: Response): Promise<void> {
 
 async function deleteClassroom(req: Request, res: Response): Promise<void> {
   try {
-    const { classid } = req.params;
+    const classid  = req.params.classid;
     const deletedClassroom = await classroomModel.deleteClassroom(String(classid));
     // if (!deletedClassroom) {
     //   res.status(404).send('Classroom not found');

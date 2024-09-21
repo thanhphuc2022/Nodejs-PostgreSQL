@@ -56,11 +56,11 @@ async function updateClassroom(classid:string, classroom:Classroom): Promise<Cla
   }
 }
 
-async function deleteClassroom(personid: string): Promise<Classroom> {
+async function deleteClassroom(classid: string): Promise<Classroom> {
   try {
     const res=await client.query<Classroom>(
       classroomQuerie.deleteClassroom,
-      [personid]
+      [classid]
     );
     return res.rows[0];
   } catch (error) {
